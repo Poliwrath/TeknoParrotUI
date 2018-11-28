@@ -10,6 +10,8 @@ namespace TeknoParrotUi.Common
     {
         //Open Source
         OpenParrot,
+        //Open Source, konami loader
+        OpenParrotKonami,
         //BudgieLoader/Lindbergh games?
         Lindbergh,
         //Other

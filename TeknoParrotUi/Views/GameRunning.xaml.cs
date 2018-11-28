@@ -371,6 +371,9 @@ namespace TeknoParrotUi.Views
                     case EmulatorType.Lindbergh:
                         loaderExe = "BudgieLoader.exe";
                         break;
+                    case EmulatorType.OpenParrotKonami:
+                        loaderExe = "OpenParrotKonamiLoader.exe";
+                        break;
                     case EmulatorType.TeknoParrot:
                     default:
                         loaderExe = _gameProfile.Is64Bit ? "ParrotLoader64.exe" : "ParrotLoader.exe";

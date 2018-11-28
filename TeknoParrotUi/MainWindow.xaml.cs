@@ -267,7 +267,8 @@ namespace TeknoParrotUi
             "OpenParrotLoader64.exe",
             "ParrotLoader.exe",
             "ParrotLoader64.exe",
-            "BudgieLoader.exe"
+            "BudgieLoader.exe",
+            "OpenParrotKonamiLoader.exe"
         };
 
         private bool ValidateGameRun(GameProfile gameProfile)
