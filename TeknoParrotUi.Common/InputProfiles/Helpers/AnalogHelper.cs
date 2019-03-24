@@ -45,6 +45,7 @@ namespace TeknoParrotUi.Common.InputProfiles.Helpers
             {
                 return state.Gamepad.RightTrigger;
             }
+
             return 0;
         }
 

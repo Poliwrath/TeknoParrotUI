@@ -678,18 +678,8 @@ namespace TeknoParrotUi.Common.Jvs
 
             if (TaitoBattleGear)
             {
-                byte gas = 0;
-                byte brake = 0;
-                if (node == 1)
-                {
-                    gas = InputCode.AnalogBytes[1];
-                    brake = InputCode.AnalogBytes[3];
-                }
-                else
-                {
-                    gas = InputCode.AnalogBytes2[1];
-                    brake = InputCode.AnalogBytes2[3];
-                }
+                byte gas = node == 1 ? InputCode.AnalogBytes[1] : InputCode.AnalogBytes2[1];
+                byte brake = node == 1 ? InputCode.AnalogBytes[3] : InputCode.AnalogBytes2[3];
 
                 byteLst.Add(0x04);
                 byteLst.Add(gas);
@@ -697,23 +687,11 @@ namespace TeknoParrotUi.Common.Jvs
                 byteLst.Add(0x04);
                 byteLst.Add(brake);
 
-                byteLst.Add(0x80);
-                byteLst.Add(0);
-
-                byteLst.Add(0x80);
-                byteLst.Add(0);
-
-                byteLst.Add(0x80);
-                byteLst.Add(0);
-
-                byteLst.Add(0x80);
-                byteLst.Add(0);
-
-                byteLst.Add(0x80);
-                byteLst.Add(0);
-
-                byteLst.Add(0x80);
-                byteLst.Add(0);
+                for (var i = 0; i < 6; i++)
+                {
+                    byteLst.Add(0x80);
+                    byteLst.Add(0);
+                }
 
                 reply.Bytes = byteLst.ToArray();
                 return reply;
@@ -721,17 +699,11 @@ namespace TeknoParrotUi.Common.Jvs
 
             for (int i = 0; i < channelCount; i++)
             {
-                if (node == 1)
-                {
-                    byteLst.Add(InputCode.AnalogBytes[(i * 2)]);
-                    byteLst.Add(InputCode.AnalogBytes[(i * 2) + 1]);
-                }
-                else
-                {
-                    byteLst.Add(InputCode.AnalogBytes2[(i * 2)]);
-                    byteLst.Add(InputCode.AnalogBytes2[(i * 2) + 1]);
-                }
+                var chan = i * 2;
+                byteLst.Add(node == 1 ? InputCode.AnalogBytes[chan] : InputCode.AnalogBytes2[chan]);
+                byteLst.Add(node == 1 ? InputCode.AnalogBytes[chan + 1] : InputCode.AnalogBytes2[chan + 1]);
             }
+
             reply.Bytes = byteLst.ToArray();
             return reply;
         }

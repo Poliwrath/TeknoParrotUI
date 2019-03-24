@@ -29,26 +29,19 @@ namespace TeknoParrotUi.Common
 
         public RawInputListener()
         {
-            _hookedWindows = File.ReadAllLines("HookedWindows.txt").ToList();
-        }
-
-        private bool isHookableWindow(string windowTitle)
-        {
-            for (int i = 0; i < _hookedWindows.Count; i++)
-            {
-                if (windowTitle == _hookedWindows[i])
-                    return true;
-            }
-            return false;
+            _hookedWindows = File.Exists("HookedWindows.txt") ? File.ReadAllLines("HookedWindows.txt").ToList() : new List<string>();
         }
 
         private IntPtr GetWindowInformation()
         {
-            foreach (Process pList in Process.GetProcesses())
+            foreach (var proc in Process.GetProcesses())
             {
-                if(isHookableWindow(pList.MainWindowTitle))
+                foreach (var hookable in _hookedWindows)
                 {
-                    return pList.MainWindowHandle;
+                    if (proc.MainWindowTitle == hookable)
+                    {
+                        return proc.MainWindowHandle;
+                    }
                 }
             }
             return IntPtr.Zero;

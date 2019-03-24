@@ -36,7 +36,7 @@ namespace TeknoParrotUi.Views
         private static RawInputListener _rawInputListener = new RawInputListener();
         private static readonly InputListener InputListener = new InputListener();
         private static bool _killGunListener;
-        private static Thread _lgiThread;
+        private static Thread _gunThread;
         private bool _jvsOverride;
         private readonly byte _player1GunMultiplier = 1;
         private readonly byte _player2GunMultiplier = 1;
@@ -85,9 +85,9 @@ namespace TeknoParrotUi.Views
         }
 
         /// <summary>
-        /// Handles Lets Go Island controls.
+        /// Handles gun controls.
         /// </summary>
-        private void HandleLgiControls()
+        private void HandleGun()
         {
             while (true)
             {
@@ -245,8 +245,8 @@ namespace TeknoParrotUi.Views
             if (_gameProfile.GunGame)
             {
                 _killGunListener = false;
-                _lgiThread = new Thread(HandleLgiControls);
-                _lgiThread.Start();
+                _gunThread = new Thread(HandleGun);
+                _gunThread.Start();
             }
 
             if (!_runEmuOnly)
@@ -363,10 +363,10 @@ namespace TeknoParrotUi.Views
 
         private void CreateGameProcess()
         {
-            var loaderExe = "";
-            var arguments = "";
             var gameThread = new Thread(() =>
             {
+                // default loader
+                string loaderExe = _gameProfile.Is64Bit ? "ParrotLoader64.exe" : "ParrotLoader.exe";
                 switch (_gameProfile.EmulatorType)
                 {
                     case EmulatorType.OpenParrot:
@@ -377,9 +377,6 @@ namespace TeknoParrotUi.Views
                         break;
                     case EmulatorType.N2:
                         loaderExe = ".\\N2\\BudgieLoader.exe";
-                        break;
-                    default:
-                        loaderExe = _gameProfile.Is64Bit ? "ParrotLoader64.exe" : "ParrotLoader.exe";
                         break;
                 }
 
@@ -402,13 +399,13 @@ namespace TeknoParrotUi.Views
                         extra = fullscreen ? "-fullscreen " : string.Empty;
                         break;
                     case EmulationProfile.NamcoPokken:
-                        if (width != null)
-                            if (height != null)
-                                extra = $"\"screen_width={Convert.ToInt16(width.FieldValue)}" + " " +
-                                        $"screen_height={Convert.ToInt16(height.FieldValue)}\"";
+                        if (width != null && height != null && short.TryParse(width.FieldValue, out var width_) && short.TryParse(height.FieldValue, out var height_))
+                            extra = $"\"screen_width={width_}" + " " +
+                                    $"screen_height={height_}\"";
                         break;
                 }
 
+                string arguments;
                 if (_isTest)
                 {
                     arguments = _testMenuIsExe
@@ -430,9 +427,11 @@ namespace TeknoParrotUi.Views
                             }
 
                             break;
-                        case EmulatorType.N2:
-                            extra = "-heapsize 131072 +set developer 1 -game czero -devel -nodb -console -noms";
-                            break;
+                    }
+
+                    if (_gameProfile.EmulationProfile == EmulationProfile.CSNEO)
+                    {
+                        extra = "-heapsize 131072 +set developer 1 -game czero -devel -nodb -console -noms";
                     }
 
                     arguments = $"\"{_gameLocation}\" {extra}";
@@ -518,7 +517,7 @@ namespace TeknoParrotUi.Views
                             "[AMUpdaterConfig] \r\n;; AMUpdater\r\namucfg-title=COCO\r\namucfg-lang=JP\r\namucfg-countdown=5\r\namucfg-h_resol=1360\r\namucfg-v_resol=768\r\namucfg-logfile=amupdater.log\r\namucfg-game_rev=1\r\n\r\n[AMAuthdConfig]\r\n;; AMAuthd\r\namdcfg-authType=ALL.NET\r\namdcfg-sleepTime=50\r\namdcfg-resoNameTimeout=180\r\namdcfg-writableConfig=WritableConfig.ini\r\namdcfg-showConsole=ENABLE\r\namdcfg-logfile=- ;\r\namdcfg-export_log=AmAuthdLog.zip ;\r\n\r\n[AllnetConfig] \r\n;; ALL.Net\r\nallcfg-gameID=SBZB\r\nallcfg-gameVer=1.10\r\n;allcfg-tenpoAddr=;\r\n;allcfg-authServerAddr=;\r\n\r\n[AllnetOptionRevalTime]\r\n;; ALL.Net\r\nallopt-reval_hour=7\r\nallopt-reval_minute=0\r\nallopt-reval_second=0\r\n\r\n[AllnetOptionTimeout]\r\n;; ALL.Net\r\nallopt-timeout_connect=60000  \r\nallopt-timeout_send=60000\r\nallopt-timeout_recv=60000\r\n\r\n[MuchaAppConfig]\r\n;; mucha_app\r\nappcfg-logfile=muchaapp.log;\r\nappcfg-loglevel=INFO ;\r\n\r\n[MuchaSysConfig]\r\n;; MUCHA\r\nsyscfg-daemon_exe=.\\MuchaBin\\muchacd.exe\r\nsyscfg-daemon_pidfile=muchacd.pid ;\r\nsyscfg-daemon_logfile=muchacd.log ;\r\nsyscfg-daemon_loglevel=INFO ;\r\nsyscfg-daemon_listen=tcp:0.0.0.0:8765\r\nsyscfg-client_connect=tcp:127.0.0.1:8765\r\n\r\n[MuchaCAConfig]\r\n;; MUCHA\r\ncacfg-game_cd=MK31 ;\r\ncacfg-game_ver=10.22\r\ncacfg-game_board_type=0\r\ncacfg-game_board_id=PCB\r\ncacfg-auth_server_url=https://127.0.0.1:443/mucha_front/\r\ncacfg-auth_server_sslverify=1\r\ncacfg-auth_server_sslcafile=.\\MuchaBin\\cakey_mk3.pem\r\ncacfg-auth_server_timeout=0\r\ncacfg-interval_ainfo_renew=1800\r\ncacfg-interval_ainfo_retry=60\r\ncacfg-auth_place_id=JPN0128C ;\r\n;cacfg-auth_store_router_ip=\r\n\r\n[MuchaDtConfig]\r\n;; MUCHA\r\ndtcfg-dl_product_id=0x4d4b3331\r\ndtcfg-dl_chunk_size=65536\r\ndtcfg-dl_image_path=chunk.img\r\ndtcfg-dl_image_size=0\r\ndtcfg-dl_image_type=FILE\r\ndtcfg-dl_image_crypt_key=0xfedcba9876543210\r\ndtcfg-dl_log_level=INFO ;\r\ndtcfg-dl_lan_crypt_key=0xfedcba9876543210\r\ndtcfg-dl_lan_broadcast_interval=1000\r\ndtcfg-dl_lan_udp_port=9026\r\ndtcfg-dl_lan_bandwidth_limit=0\r\ndtcfg-dl_lan_broadcast_address=0.0.0.0\r\ndtcfg-dl_wan_retry_limit=\r\ndtcfg-dl_wan_retry_interval=\r\ndtcfg-dl_wan_send_timeout=\r\ndtcfg-dl_wan_recv_timeout=\r\ndtcfg-dl_lan_retry_limit=\r\ndtcfg-dl_lan_retry_interval=\r\ndtcfg-dl_lan_send_timeout=\r\ndtcfg-dl_lan_recv_timeout=\r\n\r\n[MuchaDtModeConfig]\r\n;; MUCHA\r\ndtmode-io_dir=.\\ ;\r\ndtmode-io_file=MK3_JP_\r\ndtmode-io_conv=DECEXP\r\ndtmode-io_passphrase=ktinkynhgimbt\r\n");
 
                         // Register iauthd.dll
-                        Register_Dlls(Path.Combine(Path.GetDirectoryName(_gameLocation), "AMCUS", "iauthdll.dll"));
+                        RegisterDLL(Path.Combine(Path.GetDirectoryName(_gameLocation), "AMCUS", "iauthdll.dll"));
 
                         // Start AMCUS
                         RunAndWait(loaderExe,
@@ -606,8 +605,7 @@ namespace TeknoParrotUi.Views
             gameThread.Start();
         }
 
-
-        private static void Register_Dlls(string filePath)
+        private static void RegisterDLL(string filePath)
         {
             try
             {

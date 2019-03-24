@@ -96,7 +96,5 @@ namespace TeknoParrotUi.Common
             InputListenerXInput.KillMe = true;
             InputListenerDirectInput.KillMe = true;
         }
-
-
     }
 }

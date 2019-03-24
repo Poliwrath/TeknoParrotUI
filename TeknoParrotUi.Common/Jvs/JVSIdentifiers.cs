@@ -15,7 +15,7 @@ namespace TeknoParrotUi.Common.Jvs
         // public const string Sega1998Jvs13551 = "SEGA ENTERPRISES,LTD.;I/O BD JVS;837-13551 ;Ver1.00;98/10\0";
         public const string NBGI_MarioKart3 = "NBGI.;NA-JV;Ver6.01;JPN,MK3100-1-NA-APR0-A01\0";
         public const string NBGI_Pokken = "namco ltd.;NA-JV;Ver4.01;JPN,MK3100-1-NA-APR0-A01\0";
-        //Star Wars and Lost Land Adventure (unsupported atm?)
+        // Star Wars and Lost Land Adventure (unsupported atm?)
         public const string NamcoMultipurpose = "namco ltd.;NA-JV;Ver4.00;JPN,Multipurpose.\0";
     }
 }
