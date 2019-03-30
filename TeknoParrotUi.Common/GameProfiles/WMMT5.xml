@@ -8,11 +8,10 @@
   <TestMenuExtraParameters/>
   <IconName>Icons\WMMT5.png</IconName>
   <EmulationProfile>NamcoWmmt5</EmulationProfile>
-  <GameProfileRevision>14</GameProfileRevision>
+  <GameProfileRevision>15</GameProfileRevision>
   <Is64Bit>true</Is64Bit>
   <HasSeparateTestMode>false</HasSeparateTestMode>
   <EmulatorType>OpenParrot</EmulatorType>
-  <ForceFeedback>true</ForceFeedback>
   <ValidMd5>MD5\WMMT5.md5</ValidMd5>
   <ConfigValues>
     <FieldInformation>

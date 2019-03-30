@@ -8,12 +8,11 @@
   <TestMenuExtraParameters/>
   <IconName>Icons\SRC.png</IconName>
   <EmulationProfile>SegaRacingClassic</EmulationProfile>
-  <GameProfileRevision>5</GameProfileRevision>
+  <GameProfileRevision>6</GameProfileRevision>
   <HasSeparateTestMode>true</HasSeparateTestMode>
   <EmulatorType>TeknoParrot</EmulatorType>
-  <ForceFeedback>true</ForceFeedback>
   <ConfigValues>
-     <FieldInformation>
+    <FieldInformation>
       <CategoryName>General</CategoryName>
       <FieldName>XInput</FieldName>
       <FieldValue>0</FieldValue>
