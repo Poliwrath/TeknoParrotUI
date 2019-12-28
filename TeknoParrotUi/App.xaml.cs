@@ -106,6 +106,9 @@ namespace TeknoParrotUi
             // if user isn't patreon, use defaults
             if (!IsPatreon())
             {
+                // Colours
+                // https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit/tree/master/MaterialDesignColors.Wpf/Themes
+
                 colourname = "lightblue";
 
                 if (holiday)
@@ -122,7 +125,7 @@ namespace TeknoParrotUi
                     {
                         // christmas - red title
                         colourname = "red";
-                    } 
+                    }
                 }
             }
 
