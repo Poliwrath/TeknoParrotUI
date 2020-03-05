@@ -815,7 +815,7 @@ namespace TeknoParrotUi.Views
 
                             File.Copy(loaderDll, openparrot_path);
 
-                            // TODO: many command line options, such as -ea.
+                            // TODO: toggles for options
                             extra = $"-k {(Path.GetFileName(loaderDll))} -cfgpath spicetools.xml -overlaydisable -nolegacy {(fullscreen ? "-w" : string.Empty)}";
 
                             loaderExe = spice_path;
