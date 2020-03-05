@@ -62,6 +62,9 @@ namespace TeknoParrotUi.Common.Pipes
                 Control |= (int)Buttons.BUTTON9;
 
             JvsHelper.StateView.Write(8, Control);
+            JvsHelper.StateView.Write(12, InputCode.AnalogBytes[0]);
+            JvsHelper.StateView.Write(16, InputCode.AnalogBytes[2]);
+            JvsHelper.StateView.Write(20, InputCode.AnalogBytes[4]);
         }
     }
 }
