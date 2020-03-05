@@ -13,8 +13,8 @@
   <ExecutableName>jgt.dll</ExecutableName>
   <DevOnly>true</DevOnly>
   <ConfigValues>
-	<FieldInformation>
-      <CategoryName>General</CategoryName>
+  <FieldInformation>
+    <CategoryName>General</CategoryName>
       <FieldName>Windowed</FieldName>
       <FieldValue>0</FieldValue>
       <FieldType>Bool</FieldType>
@@ -33,23 +33,23 @@
       <ButtonName>View</ButtonName>
       <InputMapping>P1Button1</InputMapping>
     </JoystickButtons>
-	<JoystickButtons>
+    <JoystickButtons>
       <ButtonName>Dimension (2D/3D) Toggle</ButtonName>
       <InputMapping>P1Button2</InputMapping>
     </JoystickButtons>
-	<JoystickButtons>
+    <JoystickButtons>
       <ButtonName>Lever Up</ButtonName>
       <InputMapping>P1Button3</InputMapping>
     </JoystickButtons>
-	<JoystickButtons>
+    <JoystickButtons>
       <ButtonName>Lever Down</ButtonName>
       <InputMapping>P1Button4</InputMapping>
     </JoystickButtons>
-	<JoystickButtons>
+    <JoystickButtons>
       <ButtonName>Lever Left</ButtonName>
       <InputMapping>P1Button5</InputMapping>
     </JoystickButtons>
-	<JoystickButtons>
+    <JoystickButtons>
       <ButtonName>Lever Right</ButtonName>
       <InputMapping>P1Button6</InputMapping>
     </JoystickButtons>
