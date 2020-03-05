@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GameProfile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <GameName>HELLO! POP'N MUSIC</GameName>
+  <GameName>Road Fighters 3D</GameName>
   <GamePath/>
   <TestMenuParameter></TestMenuParameter>
   <TestMenuIsExecutable>false</TestMenuIsExecutable>
@@ -10,7 +10,7 @@
   <GameProfileRevision>0</GameProfileRevision>
   <HasSeparateTestMode>false</HasSeparateTestMode>
   <EmulatorType>SpiceTools</EmulatorType>
-  <ExecutableName>popn.dll</ExecutableName>
+  <ExecutableName>jgt.dll</ExecutableName>
   <DevOnly>true</DevOnly>
   <ConfigValues>
 	<FieldInformation>
@@ -30,44 +30,28 @@
       <InputMapping>Service1</InputMapping>
     </JoystickButtons>
     <JoystickButtons>
-      <ButtonName>P1 Start</ButtonName>
+      <ButtonName>View</ButtonName>
       <InputMapping>P1Button1</InputMapping>
     </JoystickButtons>
 	<JoystickButtons>
-      <ButtonName>P1 Red</ButtonName>
+      <ButtonName>Dimension (2D/3D) Toggle</ButtonName>
       <InputMapping>P1Button2</InputMapping>
     </JoystickButtons>
 	<JoystickButtons>
-      <ButtonName>P1 Blue</ButtonName>
+      <ButtonName>Lever Up</ButtonName>
       <InputMapping>P1Button3</InputMapping>
     </JoystickButtons>
 	<JoystickButtons>
-      <ButtonName>P1 Yellow</ButtonName>
+      <ButtonName>Lever Down</ButtonName>
       <InputMapping>P1Button4</InputMapping>
     </JoystickButtons>
 	<JoystickButtons>
-      <ButtonName>P1 Green</ButtonName>
+      <ButtonName>Lever Left</ButtonName>
       <InputMapping>P1Button5</InputMapping>
     </JoystickButtons>
 	<JoystickButtons>
-      <ButtonName>P2 Start</ButtonName>
+      <ButtonName>Lever Right</ButtonName>
       <InputMapping>P1Button6</InputMapping>
-    </JoystickButtons>
-	<JoystickButtons>
-      <ButtonName>P2 Red</ButtonName>
-      <InputMapping>ExtensionOne1</InputMapping>
-    </JoystickButtons>
-	<JoystickButtons>
-      <ButtonName>P2 Blue</ButtonName>
-      <InputMapping>ExtensionOne11</InputMapping>
-    </JoystickButtons>
-	<JoystickButtons>
-      <ButtonName>P2 Yellow</ButtonName>
-      <InputMapping>ExtensionOne12</InputMapping>
-    </JoystickButtons>
-	<JoystickButtons>
-      <ButtonName>P2 Green</ButtonName>
-      <InputMapping>ExtensionOne13</InputMapping>
     </JoystickButtons>
   </JoystickButtons>
 </GameProfile>
