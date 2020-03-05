@@ -13,8 +13,8 @@
   <ExecutableName>popn.dll</ExecutableName>
   <DevOnly>true</DevOnly>
   <ConfigValues>
-  <FieldInformation>
-    <CategoryName>General</CategoryName>
+	<FieldInformation>
+      <CategoryName>General</CategoryName>
       <FieldName>Windowed</FieldName>
       <FieldValue>0</FieldValue>
       <FieldType>Bool</FieldType>
@@ -33,39 +33,39 @@
       <ButtonName>P1 Start</ButtonName>
       <InputMapping>P1Button1</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P1 Red</ButtonName>
       <InputMapping>P1Button2</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+		<JoystickButtons>
       <ButtonName>P1 Blue</ButtonName>
       <InputMapping>P1Button3</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P1 Yellow</ButtonName>
       <InputMapping>P1Button4</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P1 Green</ButtonName>
       <InputMapping>P1Button5</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P2 Start</ButtonName>
       <InputMapping>P1Button6</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P2 Red</ButtonName>
       <InputMapping>ExtensionOne1</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P2 Blue</ButtonName>
       <InputMapping>ExtensionOne11</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P2 Yellow</ButtonName>
       <InputMapping>ExtensionOne12</InputMapping>
     </JoystickButtons>
-    <JoystickButtons>
+	<JoystickButtons>
       <ButtonName>P2 Green</ButtonName>
       <InputMapping>ExtensionOne13</InputMapping>
     </JoystickButtons>
