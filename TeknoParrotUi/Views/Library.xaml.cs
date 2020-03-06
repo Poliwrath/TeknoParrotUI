@@ -186,10 +186,11 @@ namespace TeknoParrotUi.Views
             {
                 // 64-bit game on non-64 bit OS
                 var disabled = (gameProfile.Is64Bit && !Environment.Is64BitOperatingSystem);
+                var thirdparty = gameProfile.EmulatorType == EmulatorType.SpiceTools;
 
                 var item = new ListBoxItem
                 {
-                    Content = gameProfile.GameName + (gameProfile.Patreon ? " (Patreon)" : string.Empty) + (disabled ? " (64-bit)" : string.Empty),
+                    Content = gameProfile.GameName + (gameProfile.Patreon ? " (Patreon)" : string.Empty) + (disabled ? " (64-bit)" : string.Empty) + (thirdparty ? $" (Third-Party - {gameProfile.EmulatorType})" : string.Empty),
                     Tag = gameProfile
                 };
 
@@ -292,6 +293,14 @@ namespace TeknoParrotUi.Views
 
             if (!File.Exists(loaderExe))
             {
+                // special message for SpiceTools
+                if (gameProfile.EmulatorType == EmulatorType.SpiceTools)
+                {
+                    Directory.CreateDirectory("SpiceTools");
+                    MessageBoxHelper.ErrorOK($"Please download SpiceTools and extract {loaderExe} into the SpiceTools folder!");
+                    return false;
+                }
+
                 MessageBoxHelper.ErrorOK(string.Format(Properties.Resources.LibraryCantFindLoader, loaderExe));
                 return false;
             }
